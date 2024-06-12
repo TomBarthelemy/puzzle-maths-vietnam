@@ -1,0 +1,72 @@
+<div class="page-container">
+  <div class="title">
+    <span>{{ title }}</span>
+  </div>
+
+  <div class="texte">
+    <h2>
+      Voici un petit
+      <span class="highlight-green">casse-tête mathématique</span> qui a captivé
+      l'attention de nombreux internautes. Il s'agit de
+      <span class="highlight-green">placer les nombres de 1 à 9</span> (une
+      seule fois chacun) dans les 9 cases vides du "serpent" ci-dessous de
+      manière à ce que le résultat de la formule obtenue soit égal à 66.
+    </h2>
+
+    <h2>
+      Ce puzzle, connu sous le nom de
+      <span class="highlight-green">"serpent vietnamien"</span>, a fait le buzz
+      car il aurait été donné par un
+      <span class="highlight-green">instituteur vietnamien à ses élèves de 8 ans</span
+      >, ce qui correspondrait à des élèves de <span class="highlight-green">CE2 en France</span>. Cette anecdote a
+      rapidement enflammé les discussions en ligne, beaucoup d'adultes ayant
+      trouvé le problème <span class="highlight-green">particulièrement ardu à résoudre manuellement</span>.
+    </h2>
+  </div>
+
+  <div class="main-content">
+    <mat-card class="serpent-container">
+      <div
+        *ngFor="let row of SNAKE_GRILLE; let rowIndex = index"
+        class="serpent-row"
+      >
+        <div
+          *ngFor="let box of row; let colIndex = index"
+          [ngClass]="getBoxClass(box, rowIndex, colIndex)"
+          class="box"
+          [attr.data-row]="rowIndex"
+          [attr.data-col]="colIndex"
+        >
+          {{ getBoxValue(rowIndex, colIndex) }}
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="solutions-container">
+      <span class="solutions-header">{{ solutionHeader }}</span>
+      <div class="solutions-list-wrapper">
+        <mat-list>
+          <mat-list-item *ngFor="let solution of solutions">
+            {{ solution.join(", ") }}
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card>
+
+  </div>
+
+  <div class="texte">
+    <h2>
+      <span class="highlight-green">Avec exactement 128 solutions possibles</span>, ce casse-tête a été vu par
+      certains comme un <span class="highlight-green">reflet des défis de notre système éducatif en
+      mathématiques</span>. Le temps et l'effort nécessaires pour trouver une solution
+      ont surpris beaucoup de ceux qui se sont penchés sur ce problème.
+    </h2>
+  </div>
+
+  <div class="sources"> 
+    <a href="https://www.slate.fr/story/101809/puzzle-maths-vietnam"> https://www.slate.fr/story/101809/puzzle-maths-vietnam</a>
+  </div>
+
+</div>
