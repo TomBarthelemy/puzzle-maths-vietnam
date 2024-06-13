@@ -177,7 +177,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   // Ou sont les cases à remplir par les tentatives de résolution du puzzle
-  tentativeIndices = [
+  readonly GUESS_POSITIONS = [
     { row: 0, col: 0 },
     { row: 4, col: 0 },
     { row: 5, col: 1 },
@@ -197,7 +197,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedSolutionCount: number = 0;
 
   ngOnInit(): void {
-    this.currentCombinationIndex = Array(this.tentativeIndices.length).fill(
+    this.currentCombinationIndex = Array(this.GUESS_POSITIONS.length).fill(
       '?'
     );
     this.solutions = this.bruteForce([], []);
@@ -264,10 +264,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     const value = this.SNAKE_VALUES[rowIndex][colIndex];
 
     if (this.EMPTY_VALUE === value && this.currentCombinationIndex.length > 0) {
-      for (let i = 0; i < this.tentativeIndices.length; i++) {
+      for (let i = 0; i < this.GUESS_POSITIONS.length; i++) {
         if (
-          this.tentativeIndices[i].row === rowIndex &&
-          this.tentativeIndices[i].col === colIndex
+          this.GUESS_POSITIONS[i].row === rowIndex &&
+          this.GUESS_POSITIONS[i].col === colIndex
         ) {
           return this.currentCombinationIndex[i];
         }
